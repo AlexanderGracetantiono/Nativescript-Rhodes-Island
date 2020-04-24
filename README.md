@@ -6,5 +6,5 @@ git clone (url)
 
 npm install
 
-(For android devices)
+# (For android devices)
 tns run android 
