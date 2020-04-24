@@ -1,0 +1,22 @@
+<ActionBar title="Groceries"></ActionBar>
+
+<FlexboxLayout>
+  <StackLayout class="form" [class.dark]="!isLogin">
+    <!-- <Image src="https://i.ytimg.com/vi/sWN32SzwmR0/maxresdefault.jpg"></Image> -->
+    <Image src="~/assets/img/logoark.png"></Image>
+
+   <TextField hint="Email Address" keyboardType="email"
+  autocorrect="false" autocapitalizationType="none"
+  [(ngModel)]="user_entity.email" class="input input-border"></TextField>
+<TextField hint="Password" secure="true"
+  [(ngModel)]="user_entity.password" class="input input-border"></TextField>
+
+    <Button [text]="isLogin?'Sign in':'Sign up'" class="btn btn-primary" (tap)="handleSubmit()"></Button>
+    <Button [text]="isLogin?'Sign up':'Back to login'" (tap)="handleChangeState()"></Button>
+  </StackLayout>
+</FlexboxLayout>
+<!-- 
+  [text] berguna untuk mengambil param dari ts
+  text sendiri merupakan default yang tidak memunculkan text
+  [(ngModel)] import form module, berguna interagsi text dan on change
+ -->

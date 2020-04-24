@@ -1,0 +1,37 @@
+/* @import '~@nativescript/theme/css/core.css'; */
+FlexboxLayout {
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-image: url("~/assets/img/bg_1.png");
+  }
+  StackLayout {
+    width: 300;
+    padding: 10 16;
+    background-color: black;
+  }
+  Image {
+    margin-bottom: 20;
+    width: auto;
+    background-color: black;
+    height: 70;
+  }
+  Button, TextField {
+    margin-bottom: 10;
+  }
+  .btn-primary {
+    background-color: rgb(116, 116, 116);
+    margin-left: 0;
+    margin-right: 0;
+  }
+  TextField {
+    placeholder-color: gray;
+    color: white;
+  }
+  .dark {
+    background-color: #7e7e7e;
+  }
+  .dark TextField {
+     placeholder-color: rgb(255, 255, 255);
+    color:  rgb(255, 255, 255);
+  }
