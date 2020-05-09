@@ -7,7 +7,7 @@
         <Image (tap)="add()" src="~/assets/img/add.png" col="1"></Image>
     </GridLayout>
 
-    <RadListView row="1" [items]="operatorList" [class.visible]="listLoaded"
+    <RadListView row="1" [items]="listOps" [class.visible]="listLoaded"
   swipeActions="true" (itemSwipeProgressStarted)="onSwipeCellStarted($event)">
 
         <ng-template let-item="item">

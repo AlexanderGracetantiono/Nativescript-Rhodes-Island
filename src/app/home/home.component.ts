@@ -4,6 +4,7 @@ import { OperatorService } from "../services/operator.service";
 import { TextField } from "tns-core-modules/ui/text-field";
 import { ListViewEventData, RadListView } from "nativescript-ui-listview";
 import { View } from "tns-core-modules/ui/core/view";
+import * as firebase from "nativescript-plugin-firebase";
 @Component({
   selector: 'ns-home',
   templateUrl: './home.component.html',
@@ -13,9 +14,12 @@ import { View } from "tns-core-modules/ui/core/view";
 export class HomeComponent implements OnInit {
   operatorList: Operator[];
   operator: Operator = {
-    _id: 0,
-    name: ''
+    id: "",
+    name: '',
+    class: 0,
   }
+  newKey=""
+  listOps = [];
   listLoaded = false;
   isLoading = false;
   @ViewChild("operatorTextField", { static: false }) operatorTextField: ElementRef;
@@ -33,34 +37,105 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.operatorService.load().subscribe(res => {
-      console.log("result: ", res)
-      this.operatorList = res as Operator[];
-      this.isLoading = false;
-      this.listLoaded = true;
-    },
-      err => {
-        console.log(err);
-      }
-    )
+    firebase.getValue('/operators')
+      .then(result => {
+        this.isLoading = false;
+        this.listLoaded = true;
+        for (const key in result.value) {
+          if (result.value.hasOwnProperty(key)) {
+            const element = result.value[key];
+            console.log("Hasil foreach ", element.name)
+            this.listOps.push({
+              id: key,
+              name: element.name,
+              class: element.class,
+            })
+          }
+        }
+        // this.operatorList = result.value as Operator[];
+        console.log("Hasil get ops", this.listOps)
+      })
+      .catch(error => console.log("Error: " + error));
+    // this.operatorService.load().subscribe(res => {
+    //   console.log("result: ", res)
+    //   this.operatorList = res as Operator[];
+    // },
+    //   err => {
+    //     console.log(err);
+    //   }
+    // )
   }
   add() {
     if (this.operator.name.trim() === "") {
       alert("Enter operator name");
       return;
     }
-    this.operatorService.add(this.operator).subscribe((obj: Operator) => {
-      this.operatorList.unshift(obj)
-      this.operator.name = ""
-      console.log("response: ", obj);
-    })
+    firebase.push(
+      '/operators',
+      {
+        'name': this.operator.name,
+        'class': 1
+      }
+    ).then(
+      res=> {
+        console.log("Res Promise:",res)
+        this.listOps.push({
+          id: res.key,
+          name: this.operator.name,
+          class: 1
+        })
+      }
+      // function (result) {
+      //   console.log("created push: " + result.key);
+      //   console.log("created lisops: " , this.lisops);
+      //   this.listOps.unshift({
+      //     id: result.key,
+      //     name: this.operator.name,
+      //     class: 1
+      //   })
+      // }
+    );
+    // this.listOps.push({
+    //   id: this.newKey,
+    //   name: this.operator.name,
+    //   class: 1
+    // })
+
+    // this.operatorService.add(this.operator).subscribe((obj: Operator) => {
+    //   this.operatorList.unshift(obj)
+    //   this.operator.name = ""
+    //   console.log("response: ", obj);
+    // })
   }
   delete(args: ListViewEventData) {
+    console.log("Delete args: ", args)
     let operator = <Operator>args.object.bindingContext;
-    this.operatorService.delete(operator._id)
-      .subscribe(() => {
-        let index = this.operatorList.indexOf(operator);
-        this.operatorList.splice(index, 1);
-      });
+    // console.log("Delete", operator)
+    // firebase.remove("/operators/" + operator.id)
+    //   .then(result => {
+    //     console.log("Hasil delete", result)
+    //   })
+    //   .catch(error => console.log("Error: " + error));
+    // console.log("Hasil: ",this.listOps.indexOf(this.operator.id));
+    var index = this.listOps.map(x => {
+      return x.id;
+    }).indexOf(operator.id);
+    console.log("Data splice:",index)
+    this.listOps.splice(index, 1);
+    // console.log(this.operatorList);
+
+    // this.operatorList = this.operatorList.filter(x => {
+    //   return x.id != operator.id;
+    // })
+    // console.log(this.operatorList);
+    //   firebase.update(
+    //     '/operators/'+operator.id,
+    //     {'foo':'baz'}
+    // );
+    // this.operatorService.delete(operator._id)
+    //   .subscribe(() => {
+    //     let index = this.operatorList.indexOf(operator);
+    //     this.operatorList.splice(index, 1);
+    //   });
   }
 }

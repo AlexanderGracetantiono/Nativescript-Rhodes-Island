@@ -1,5 +1,6 @@
 export class Operator {
-    _id:number;
-    name: string;
-    // password: string;
-  }
+  id:string;
+  name: string;
+  class: number;
+  // password: string;
+}

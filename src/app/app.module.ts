@@ -14,29 +14,49 @@ import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
 // Uncomment and add to NgModule imports if you need to use the HttpClient wrapper
 // import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
+const firebase = require("nativescript-plugin-firebase");
+firebase.init({
+  persist: true,
+  onAuthStateChanged: function (data) { // optional but useful to immediately re-logon the user when they re-visit your app
+    console.log(data.loggedIn ? "Logged in to firebase" : "Logged out from firebase");
+    if (data.loggedIn) {
+      console.log("user's email address: " + (data.user.email ? data.user.email : "N/A"));
+    }
+  },
+  databaseURL:"/operators/operators"
+}).then(
+  () => {
+    alert("Firebase done")
+    console.log("firebase.init done");
+  },
+  error => {
+    console.log(`firebase.init error: ${error}`);
+  }
+);
+
 
 @NgModule({
-    bootstrap: [
-        AppComponent
-    ],
-    imports: [
-        NativeScriptModule,
-        AppRoutingModule,
-        NativeScriptFormsModule,
-        HttpClientModule,
-        NativeScriptUIListViewModule
-    ],
-    declarations: [
-        AppComponent,
-        ItemsComponent,
-        ItemDetailComponent,
-        LoginComponent,
-        HomeComponent
-    ],
-    providers: [],
-    schemas: [
-        NO_ERRORS_SCHEMA
-    ]
+  bootstrap: [
+    AppComponent
+  ],
+  imports: [
+    NativeScriptModule,
+    AppRoutingModule,
+    NativeScriptFormsModule,
+    HttpClientModule,
+    NativeScriptUIListViewModule
+  ],
+  declarations: [
+    AppComponent,
+    ItemsComponent,
+    ItemDetailComponent,
+    LoginComponent,
+    HomeComponent
+  ],
+  providers: [],
+  schemas: [
+    NO_ERRORS_SCHEMA
+  ]
 })
 /*
 Pass your application module to the bootstrapModule function located in main.ts to start your app

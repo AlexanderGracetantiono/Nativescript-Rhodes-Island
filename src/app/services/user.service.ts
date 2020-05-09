@@ -4,26 +4,34 @@ import { Observable, throwError } from "rxjs";
 import { catchError, map, tap } from "rxjs/operators";
 import { User } from "../model/user.model";
 import { Config } from "../config";
+const firebase = require("nativescript-plugin-firebase");
 
 @Injectable()
 export class UserService {
     constructor(private http: HttpClient) { }
 
     register(user: User) {
-        if (!user.email || !user.password) {
-            return throwError("Please provide both an email address and password.");
-        }
+        // if (!user.email || !user.password) {
+        //     return throwError("Please provide both an email address and password.");
+        // }
 
-        return this.http.post(
-            Config.apiUrl + "user/" + Config.appKey,
-            JSON.stringify({
-                username: user.email,
-                password: user.password
-            }),
-            { headers: this.getCommonHeaders() }
-        ).pipe(
-            catchError(this.handleErrors)
-        );
+        // return this.http.post(
+        //     Config.apiUrl + "user/" + Config.appKey,
+        //     JSON.stringify({
+        //         username: user.email,
+        //         password: user.password
+        //     }),
+        //     { headers: this.getCommonHeaders() }
+        // ).pipe(
+        //     catchError(this.handleErrors)
+        // );
+        return firebase.createUser({
+            email:user.email,
+            password:user.password
+        })
+        .then(
+            (res)=>console.log("reg res:",res)
+        )
     }
     login(user: User) {
         return this.http.post(
