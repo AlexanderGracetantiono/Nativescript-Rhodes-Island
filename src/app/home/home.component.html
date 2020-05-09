@@ -2,18 +2,18 @@
 
 <GridLayout rows="auto, *">
 
-    <GridLayout row="0" columns="*, auto" class="add-bar">
-        <TextField #operatorTextField [(ngModel)]="operator.name" hint="Enter operator name" col="0"></TextField>
-        <Image (tap)="add()" src="~/assets/img/add.png" col="1"></Image>
+    <GridLayout row="0" columns="*, auto" class="add-bar" (tap)="add()">
+        <!-- <TextField #operatorTextField [(ngModel)]="operator.name" hint="Enter operator name" col="0"></TextField> -->
+        <Label class="labelTitle" text="Add operator"></Label>
+        <Image src="~/assets/img/add.png" col="1"></Image>
     </GridLayout>
 
-    <RadListView row="1" [items]="listOps" [class.visible]="listLoaded"
-  swipeActions="true" (itemSwipeProgressStarted)="onSwipeCellStarted($event)">
+    <RadListView row="1" [items]="listOps" [class.visible]="listLoaded" swipeActions="true"
+        (itemSwipeProgressStarted)="onSwipeCellStarted($event)">
 
         <ng-template let-item="item">
-            <Label [text]="item.name" class="p-15"></Label>
+            <Label [text]="(item.class==0?'Caster':item.class==1?'Sniper':'Healer')+' - '+item.name" class="p-15"></Label>
         </ng-template>
-
         <GridLayout *tkListItemSwipeTemplate columns="*, auto">
             <StackLayout id="delete-view" col="1" (tap)="delete($event)" class="delete-view">
                 <Image src="~/assets/img/bin.png"></Image>

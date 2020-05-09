@@ -4,6 +4,7 @@ import { OperatorService } from "../services/operator.service";
 import { TextField } from "tns-core-modules/ui/text-field";
 import { ListViewEventData, RadListView } from "nativescript-ui-listview";
 import { View } from "tns-core-modules/ui/core/view";
+import { Router } from "@angular/router";
 import * as firebase from "nativescript-plugin-firebase";
 @Component({
   selector: 'ns-home',
@@ -18,13 +19,14 @@ export class HomeComponent implements OnInit {
     name: '',
     class: 0,
   }
-  newKey=""
+  newKey = ""
   listOps = [];
   listLoaded = false;
   isLoading = false;
   @ViewChild("operatorTextField", { static: false }) operatorTextField: ElementRef;
   constructor(
-    private operatorService: OperatorService
+    private operatorService: OperatorService,
+    private router: Router,
   ) { }
   onSwipeCellStarted(args: ListViewEventData) {
     var swipeLimits = args.data.swipeLimits;
@@ -66,35 +68,36 @@ export class HomeComponent implements OnInit {
     // )
   }
   add() {
-    if (this.operator.name.trim() === "") {
-      alert("Enter operator name");
-      return;
-    }
-    firebase.push(
-      '/operators',
-      {
-        'name': this.operator.name,
-        'class': 1
-      }
-    ).then(
-      res=> {
-        console.log("Res Promise:",res)
-        this.listOps.push({
-          id: res.key,
-          name: this.operator.name,
-          class: 1
-        })
-      }
-      // function (result) {
-      //   console.log("created push: " + result.key);
-      //   console.log("created lisops: " , this.lisops);
-      //   this.listOps.unshift({
-      //     id: result.key,
-      //     name: this.operator.name,
-      //     class: 1
-      //   })
-      // }
-    );
+    this.router.navigate(["/form"])
+    // if (this.operator.name.trim() === "") {
+    //   alert("Enter operator name");
+    //   return;
+    // }
+    // firebase.push(
+    //   '/operators',
+    //   {
+    //     'name': this.operator.name,
+    //     'class': 1
+    //   }
+    // ).then(
+    //   res=> {
+    //     console.log("Res Promise:",res)
+    //     this.listOps.push({
+    //       id: res.key,
+    //       name: this.operator.name,
+    //       class: 1
+    //     })
+    //   }
+    // function (result) {
+    //   console.log("created push: " + result.key);
+    //   console.log("created lisops: " , this.lisops);
+    //   this.listOps.unshift({
+    //     id: result.key,
+    //     name: this.operator.name,
+    //     class: 1
+    //   })
+    // }
+    // );
     // this.listOps.push({
     //   id: this.newKey,
     //   name: this.operator.name,
@@ -111,17 +114,17 @@ export class HomeComponent implements OnInit {
     console.log("Delete args: ", args)
     let operator = <Operator>args.object.bindingContext;
     // console.log("Delete", operator)
-    // firebase.remove("/operators/" + operator.id)
-    //   .then(result => {
-    //     console.log("Hasil delete", result)
-    //   })
-    //   .catch(error => console.log("Error: " + error));
-    // console.log("Hasil: ",this.listOps.indexOf(this.operator.id));
-    var index = this.listOps.map(x => {
-      return x.id;
-    }).indexOf(operator.id);
-    console.log("Data splice:",index)
-    this.listOps.splice(index, 1);
+    firebase.remove("/operators/" + operator.id)
+      .then(result => {
+        console.log("Hasil delete", result)
+        var index = this.listOps.map(x => {
+          return x.id;
+        }).indexOf(operator.id);
+        console.log("Data splice:", index)
+        this.listOps.splice(index, 1);
+      })
+      .catch(error => console.log("Error: " + error));
+    console.log("Hasil: ", this.listOps.indexOf(this.operator.id));
     // console.log(this.operatorList);
 
     // this.operatorList = this.operatorList.filter(x => {

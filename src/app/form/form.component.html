@@ -1,0 +1,23 @@
+<FlexboxLayout>
+    <StackLayout class="form">
+        <!-- <Image src="~/assets/img/logoark.png"></Image> -->
+
+        <label class="h1" text="Add Operator Form"></label>
+        <label class="title" text="Operator name :"></label>
+        <TextField  #operatorTextField [(ngModel)]="operator.name" hint="Operator Name" keyboardType="email" autocorrect="false" autocapitalizationType="none"
+        class="input input-border"></TextField>
+        <!-- <DropDown
+            class="input input-border"
+            [items]="itemSource" (selectedIndexChanged)="onchange($event)" (opened)="onopen()" (closed)="onclose()" class="item-drop-down"
+            verticalAlignment="center">
+        </DropDown> -->
+        <label class="title" text="Operator class :"></label>
+        <DropDown class="input input-border" backroundColor="red" itemsTextAlignment="center" [items]="items"
+            [(ngModel)]="selectedIndex" (selectedIndexChanged)="onchange($event)" (opened)="onopen()"
+            (closed)="onclose()" row="0" colSpan="1"></DropDown>
+
+        <Button text="Submit" class="btn btn-primary" (tap)="handleSubmit()"></Button>
+        <ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" row="1"
+        horizontalAlignment="center" verticalAlignment="center"></ActivityIndicator>
+    </StackLayout>
+</FlexboxLayout>
