@@ -23,10 +23,10 @@ export class LoginComponent implements OnInit {
     private page: Page,
   ) {
     this.user_entity = new User();
-    this.user_entity.email = "a@gmail.com"
-    this.user_entity.password = "hello1"
-    // this.user_entity.email = ""
-    // this.user_entity.password = ""
+    // this.user_entity.email = "a@gmail.com"
+    // this.user_entity.password = "hello1"
+    this.user_entity.email = ""
+    this.user_entity.password = ""
   }
 
   ngOnInit(): void {
