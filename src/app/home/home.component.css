@@ -44,3 +44,14 @@
     font-weight: bold;
     color: white;
   }
+  .subContainer{
+    background-color: white;
+    width: fit-content;
+    height: 100px;
+  }
+  .labelClass{
+    width: 500px;
+  }
+  .iconContainer{
+    background-color: black;
+  }

@@ -23,13 +23,27 @@ FlexboxLayout {
     background-color: rgb(116, 116, 116);
     margin-left: 0;
     margin-right: 0;
+    width: 260;
+    height: 90px;
+  }
+  .btn-secondary {
+    background-color: rgb(194, 194, 194);
+    margin-left: 0;
+    margin-right: 0;
+    width: 260;
+    height: 90px;
+  }
+  .btn-google{
+    background-color: white;
+    width: 260;
+    height: 90px;
   }
   TextField {
     placeholder-color: gray;
     color: white;
   }
   .dark {
-    background-color: #7e7e7e;
+    background-color: #000000;
   }
   .dark TextField {
      placeholder-color: rgb(255, 255, 255);

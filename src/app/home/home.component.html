@@ -12,7 +12,12 @@
         (itemSwipeProgressStarted)="onSwipeCellStarted($event)">
 
         <ng-template let-item="item">
-            <Label [text]="(item.class==0?'Caster':item.class==1?'Sniper':'Healer')+' - '+item.name" class="p-15"></Label>
+            <FlexboxLayout class="subContainer">
+                <FlexboxLayout class="iconContainer">
+                    <Image [src]="'~/assets/img/'+item.class+'.png'"></Image>
+                </FlexboxLayout>
+                <Label [text]="(item.class==0?'Sniper':item.class==1?'Caster':'Healer')+' - '+item.name" class="p-15 labelClass"></Label>
+            </FlexboxLayout>
         </ng-template>
         <GridLayout *tkListItemSwipeTemplate columns="*, auto">
             <StackLayout id="delete-view" col="1" (tap)="delete($event)" class="delete-view">

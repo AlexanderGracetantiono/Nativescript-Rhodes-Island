@@ -14,7 +14,7 @@
     "storage": false,
     "functions": false,
     "facebook_auth": false,
-    "google_auth": false,
+    "google_auth": true,
     "admob": false,
     "dynamic_links": false,
     "ml_kit": false
