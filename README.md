@@ -14,7 +14,10 @@ tns run android
 1. More Operator
 2. Firebase Database
 3. Online
-4. For much wow experience
+4. Login Google
+5. Login Email
+6. Much Images
+7. For much wow experience
 
 ![Much wow Experience](https://pakdebikin.web.id/wp-content/uploads/2018/07/doge-291x300.png)
 
@@ -23,3 +26,5 @@ tns run android
 2. Nativescript Angular Library
 3. Firebase API
 4. and much wow experience
+
+![Much wow Experience](https://www.nicepng.com/png/detail/368-3681808_wow-such-doge-wow-such-doge-wow-such.png)
