@@ -75,6 +75,7 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
     this.userservice.loginGoogle().then((res) => {
       this.isLoading = false;
+      this.router.navigate(["/home"])
     }, (err) => {
       this.isLoading = false;
       alert({
