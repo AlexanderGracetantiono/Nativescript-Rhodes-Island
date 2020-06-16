@@ -1,6 +1,10 @@
 # Nativescript-Rhodes-Island
 Nativescript (Android) app for Rhodes island Operator 
 
+## Download APK
+Link: https://drive.google.com/file/d/1ygG_1a1USnKauZiH8gUosyohw62LF41V/view?usp=sharing
+
+
 ## Installation
 git clone (url)
 
