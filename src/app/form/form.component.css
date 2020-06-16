@@ -9,7 +9,7 @@ FlexboxLayout {
     width: 300;
     padding: 10 16;
     background-color: white;
-    height: 400;
+    height: auto;
   }
   Image {
     width: auto;
@@ -35,8 +35,8 @@ FlexboxLayout {
      placeholder-color: rgb(255, 255, 255);
     color:  rgb(255, 255, 255);
   }
-  .title{
-
+  .title-bold{
+font-size: 12px;
   }
   .h1{
       font-size: 17px;

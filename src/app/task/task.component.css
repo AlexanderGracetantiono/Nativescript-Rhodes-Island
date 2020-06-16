@@ -1,0 +1,58 @@
+/* Add mobile styles for the component here.  */
+
+.add-bar {
+    background-color: rgb(165, 165, 165);
+    padding: 5;
+  }
+  .add-bar Image {
+    height: 25;
+    vertical-align: center;
+    margin-left: 10;
+    margin-right: 10;
+  }
+  .add-bar TextField {
+    padding: 10;
+  }
+  Label {
+    background-image: url("~/assets/img/bgstat.png");
+    background-color: white;
+    border-bottom-width: 1;
+    border-bottom-color: gray;
+    font-weight: bold;
+  }
+  .delete-view {
+    background-color: #CB1D00;
+    padding: 20;
+  }
+  .delete-view Image {
+    color: white;
+    /* height: 20px; */
+  }
+  ListView {
+    opacity: 0;
+  }
+  .visible {
+    animation-name: show;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+  @keyframes show {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .labelTitle{
+    background-color:rgb(165, 165, 165);
+    text-align: center;
+    font-weight: bold;
+    color: white;
+  }
+  .subContainer{
+    background-color: white;
+    height: 100px;
+  }
+  .labelClass{
+    width: 100%;
+  }
+  .iconContainer{
+    background-color: black;
+  }

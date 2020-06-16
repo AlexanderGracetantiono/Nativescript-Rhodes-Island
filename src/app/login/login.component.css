@@ -1,51 +1,90 @@
 /* @import '~@nativescript/theme/css/core.css'; */
+
 FlexboxLayout {
-    justify-content: center;
-    align-items: center;
-    background-size: cover;
-    background-image: url("~/assets/img/bg_1.png");
-  }
-  StackLayout {
-    width: 300;
-    padding: 10 16;
-    background-color: black;
-  }
-  Image {
-    margin-bottom: 20;
-    width: auto;
-    background-color: black;
-    height: 70;
-  }
-  Button, TextField {
-    margin-bottom: 10;
-  }
-  .btn-primary {
-    background-color: rgb(116, 116, 116);
-    margin-left: 0;
-    margin-right: 0;
-    width: 260;
-    height: 90px;
-  }
-  .btn-secondary {
-    background-color: rgb(194, 194, 194);
-    margin-left: 0;
-    margin-right: 0;
-    width: 260;
-    height: 90px;
-  }
-  .btn-google{
-    background-color: white;
-    width: 260;
-    height: 90px;
-  }
-  TextField {
-    placeholder-color: gray;
-    color: white;
-  }
-  .dark {
-    background-color: #000000;
-  }
-  .dark TextField {
-     placeholder-color: rgb(255, 255, 255);
-    color:  rgb(255, 255, 255);
-  }
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-image: url("~/assets/img/bg_1.png");
+}
+
+StackLayout {
+  /* padding: 10px; */
+}
+
+.layout {
+  width: auto;
+  height: auto;
+  padding: 50px;
+  padding-top: 100px;
+  background-color: black;
+}
+.label-subtitle{
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.layout-abs{
+  background-color: black;
+  width: initial;
+  height: initial;
+  z-index: 2;
+  opacity: 0.5;
+}
+.layout-abs2{
+  vertical-align: middle;
+  text-align: center;
+  width: 100px;
+  z-index: 2;
+}
+label {
+  padding: 20px;
+  height: max-content;
+  border-radius: 10px;
+}
+
+Image {
+  width: max-content;
+  background-color: black;
+  height: max-content;
+}
+
+Button, TextField {
+  margin-bottom: 10;
+}
+
+.btn-primary {
+  background-color: rgb(88, 88, 88);
+  width: auto;
+}
+
+.btn-secondary {
+  background-color: rgb(194, 194, 194);
+  width: auto;
+}
+.login-google{
+  color: black;
+  font-size: 16px;
+  vertical-align: middle;
+}
+.btn-google {
+  background-color: white;
+  width: min-content;
+  border-radius: 10px;
+  margin-top: 100px;
+  vertical-align: middle;
+}
+
+TextField {
+  placeholder-color: gray;
+  color: white;
+}
+
+.dark {
+  background-color: #000000;
+}
+
+.dark TextField {
+  placeholder-color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+}

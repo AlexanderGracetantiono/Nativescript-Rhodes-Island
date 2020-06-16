@@ -4,8 +4,13 @@ import { OperatorService } from "../services/operator.service";
 import { TextField } from "tns-core-modules/ui/text-field";
 import { ListViewEventData, RadListView } from "nativescript-ui-listview";
 import { View } from "tns-core-modules/ui/core/view";
+import { Page } from "tns-core-modules/ui/page";
 import { Router } from "@angular/router";
 import * as firebase from "nativescript-plugin-firebase";
+import { myData } from "../myData";
+import { WebView, LoadEventData } from "tns-core-modules/ui/web-view";
+import InAppBrowser from 'nativescript-inappbrowser'
+import { openUrl } from 'tns-core-modules/utils/utils'
 @Component({
   selector: 'ns-home',
   templateUrl: './home.component.html',
@@ -13,132 +18,105 @@ import * as firebase from "nativescript-plugin-firebase";
   providers: [OperatorService]
 })
 export class HomeComponent implements OnInit {
-  operatorList: Operator[];
+  user_name = myData.user_name;
   operator: Operator = {
     id: "",
     name: '',
     class: 0,
+    baseATK: "",
+    baseHP: "",
+    baseDEF: "",
+    img: "",
   }
-  newKey = ""
-  listOps = [];
-  listLoaded = false;
-  isLoading = false;
+  urls: string;
+
   @ViewChild("operatorTextField", { static: false }) operatorTextField: ElementRef;
   constructor(
+    private page: Page,
     private operatorService: OperatorService,
     private router: Router,
   ) { }
-  onSwipeCellStarted(args: ListViewEventData) {
-    var swipeLimits = args.data.swipeLimits;
-    var swipeView = args.object;
-    var rightItem = swipeView.getViewById<View>("delete-view");
-    swipeLimits.right = rightItem.getMeasuredWidth();
-    swipeLimits.left = 0;
-    swipeLimits.threshold = rightItem.getMeasuredWidth();
-  }
 
   ngOnInit(): void {
-    this.isLoading = true;
-    firebase.getValue('/operators')
-      .then(result => {
-        this.isLoading = false;
-        this.listLoaded = true;
-        for (const key in result.value) {
-          if (result.value.hasOwnProperty(key)) {
-            const element = result.value[key];
-            console.log("Hasil foreach ", element.name)
-            this.listOps.push({
-              id: key,
-              name: element.name,
-              class: element.class,
-            })
+
+    this.page.actionBarHidden = true;
+  }
+  onTap(id: string) {
+    switch (id) {
+      case "news":
+        this.urls = "https://gamepress.gg/arknights/core-gameplay/arknights-cn-contingency-contract-cc-explained"
+        this.openLink();
+        break;
+      case "banner":
+        this.urls = "https://gamepress.gg/arknights/should-you-pull/arknights-should-you-pull-joint-operation"
+        this.openLink();
+        break;
+      case "operation":
+        this.urls = "https://gamepress.gg/arknights/"
+        this.openLink();
+        break;
+      case "listops":
+        this.router.navigate(["/list"]);
+        break;
+      case "task":
+        this.router.navigate(["/task"]);
+        break;
+
+      default:
+        break;
+    }
+  }
+  openLink = async () => {
+    try {
+      const url = this.urls;
+      if (await InAppBrowser.isAvailable()) {
+        const result = await InAppBrowser.open(url, {
+          // iOS Properties
+          dismissButtonStyle: 'cancel',
+          preferredBarTintColor: '#636363',
+          preferredControlTintColor: 'white',
+          readerMode: true,
+          animated: true,
+          modalPresentationStyle: 'fullScreen',
+          modalTransitionStyle: 'partialCurl',
+          modalEnabled: true,
+          enableBarCollapsing: false,
+          // Android Properties
+          showTitle: false,
+          toolbarColor: '#636363',
+          secondaryToolbarColor: 'black',
+          enableUrlBarHiding: true,
+          enableDefaultShare: true,
+          forceCloseOnRedirection: false,
+          // Specify full animation resource identifier(package:anim/name)
+          // or only resource name(in case of animation bundled with app).
+          animations: {
+            startEnter: 'slide_in_right',
+            startExit: 'slide_out_left',
+            endEnter: 'slide_in_left',
+            endExit: 'slide_out_right'
+          },
+          headers: {
+            'my-custom-header': 'my custom header value'
           }
-        }
-        // this.operatorList = result.value as Operator[];
-        console.log("Hasil get ops", this.listOps)
+        })
+        // alert({
+        //   title: 'Response',
+        //   message: JSON.stringify(result),
+        //   okButtonText: 'Ok'
+        // })
+      }
+      else {
+        openUrl(url);
+      }
+    }
+    catch (error) {
+      alert({
+        title: 'Error',
+        message: error.message,
+        okButtonText: 'Ok'
       })
-      .catch(error => console.log("Error: " + error));
-    // this.operatorService.load().subscribe(res => {
-    //   console.log("result: ", res)
-    //   this.operatorList = res as Operator[];
-    // },
-    //   err => {
-    //     console.log(err);
-    //   }
-    // )
+    }
   }
-  add() {
-    this.router.navigate(["/form"])
-    // if (this.operator.name.trim() === "") {
-    //   alert("Enter operator name");
-    //   return;
-    // }
-    // firebase.push(
-    //   '/operators',
-    //   {
-    //     'name': this.operator.name,
-    //     'class': 1
-    //   }
-    // ).then(
-    //   res=> {
-    //     console.log("Res Promise:",res)
-    //     this.listOps.push({
-    //       id: res.key,
-    //       name: this.operator.name,
-    //       class: 1
-    //     })
-    //   }
-    // function (result) {
-    //   console.log("created push: " + result.key);
-    //   console.log("created lisops: " , this.lisops);
-    //   this.listOps.unshift({
-    //     id: result.key,
-    //     name: this.operator.name,
-    //     class: 1
-    //   })
-    // }
-    // );
-    // this.listOps.push({
-    //   id: this.newKey,
-    //   name: this.operator.name,
-    //   class: 1
-    // })
 
-    // this.operatorService.add(this.operator).subscribe((obj: Operator) => {
-    //   this.operatorList.unshift(obj)
-    //   this.operator.name = ""
-    //   console.log("response: ", obj);
-    // })
-  }
-  delete(args: ListViewEventData) {
-    console.log("Delete args: ", args)
-    let operator = <Operator>args.object.bindingContext;
-    // console.log("Delete", operator)
-    firebase.remove("/operators/" + operator.id)
-      .then(result => {
-        console.log("Hasil delete", result)
-        var index = this.listOps.map(x => {
-          return x.id;
-        }).indexOf(operator.id);
-        console.log("Data splice:", index)
-        this.listOps.splice(index, 1);
-      })
-      .catch(error => console.log("Error: " + error));
-    console.log("Hasil: ", this.listOps.indexOf(this.operator.id));
-    // console.log(this.operatorList);
-
-    // this.operatorList = this.operatorList.filter(x => {
-    //   return x.id != operator.id;
-    // })
-    // console.log(this.operatorList);
-    //   firebase.update(
-    //     '/operators/'+operator.id,
-    //     {'foo':'baz'}
-    // );
-    // this.operatorService.delete(operator._id)
-    //   .subscribe(() => {
-    //     let index = this.operatorList.indexOf(operator);
-    //     this.operatorList.splice(index, 1);
-    //   });
-  }
 }

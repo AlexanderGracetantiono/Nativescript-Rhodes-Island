@@ -8,9 +8,14 @@ import { ItemDetailComponent } from "./item/item-detail.component";
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from "@angular/common/http";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
-import { HomeComponent } from './home/home.component';
-import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
+import { ListComponent } from './list/list.component';
+import { ShellComponent } from "./shell/shell.component";
 import { FormComponent } from './form/form.component';
+import { HomeComponent } from './home/home.component';
+import { TaskComponent } from './task/task.component';
+import { Ops_detailComponent } from "./ops_detail/ops_detail.component";
+import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
+import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
 // Uncomment and add to NgModule imports if you need to use the HttpClient wrapper
@@ -41,6 +46,7 @@ firebase.init({
     AppComponent
   ],
   imports: [
+    NativeScriptUISideDrawerModule,
     NativeScriptModule,
     AppRoutingModule,
     NativeScriptFormsModule,
@@ -53,8 +59,12 @@ firebase.init({
     ItemsComponent,
     ItemDetailComponent,
     LoginComponent,
+    ListComponent,
+    FormComponent,
+    ShellComponent,
+    Ops_detailComponent,
     HomeComponent,
-    FormComponent
+    TaskComponent
   ],
   providers: [],
   schemas: [

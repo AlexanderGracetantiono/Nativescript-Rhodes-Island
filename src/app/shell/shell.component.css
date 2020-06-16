@@ -1,0 +1,54 @@
+button {
+    font-size: 15;
+    horizontal-align: center;
+}
+
+RadSideDrawer .drawerContentText {
+    font-size: 13;
+    padding: 10;
+}
+
+RadSideDrawer .drawerContentButton {
+    margin: 10;
+    horizontal-align: left;
+}
+.add-bar{
+    background-color: lightgray;
+}
+.labelDesc{
+    font-size: 12px;
+}
+.labelTitle{
+    font-size: 16px;
+    vertical-align: middle;
+}
+.img-style{
+    width: 70px;
+    height: 70px;
+}
+.sideStackLayout {
+    background-color: gray;
+}
+
+.sideTitleStackLayout {
+    text-align: center;
+    vertical-align: center;
+    height: 100px;
+}
+.img-ic{
+    width: 40px;
+    height: 40px;
+    resize: both;
+}
+.sideLabelCon{
+    background-color: lightgray;
+    margin-top: 10px;
+    padding: 15;
+}
+.sideLabel {
+    font-size: 16px;
+}
+
+.sideLightGrayLabel {
+    background-color: lightgray;
+}

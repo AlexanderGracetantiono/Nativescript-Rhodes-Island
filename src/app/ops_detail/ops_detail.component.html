@@ -1,0 +1,46 @@
+<ActionBar title='Details of '></ActionBar>
+
+<GridLayout rows="auto, auto, auto, auto,auto,auto,auto, *" columns="*, *" *ngIf="operator_detail"
+    style="padding-top: 90px;" [items]="rating">
+
+    <Image [src]="operator_detail.img" row="0" col="0" colSpan="2" class="ops-img"></Image>
+    <AbsoluteLayout>
+        <Image [src]="'~/assets/img/'+operator_detail.class+'.png'" row="0" col="0" colSpan="2" class="ops-class">
+        </Image>
+    </AbsoluteLayout>
+    <GridLayout rows="auto " columns="100px, *" *ngIf="operator_detail" style="margin-top: 20px;" row="2" col="0"
+        colSpan="2" class="Stat-desc">
+        <Label text="Name:" row="0" col="0" class="h2 p-l-20"></Label>
+        <Label [text]="operator_detail.name" row="0" col="1" class="h2 p-l-20"></Label>
+    </GridLayout>
+
+    <GridLayout rows="auto" columns="100px, *" *ngIf="operator_detail" style="margin-top: 5px;" row="3" col="0"
+        colSpan="2" class="Stat-desc">
+        <Label text="Class:" row="0" col="0" class="h2 p-l-20"></Label>
+        <Label [text]="(operator_detail.class==0?'Sniper':operator_detail.class==1?'Caster':'Healer')" class="h2 p-l-20"
+            row="0" col="1"></Label>
+    </GridLayout>
+
+    <GridLayout rows="auto" columns="150px,auto, *" *ngIf="operator_detail" style="margin-top: 5px;" row="4" col="0"
+        colSpan="2" class="Stat-desc">
+        <Label text="Base Attack" row="0" col="0" class="h2 p-l-20"></Label>
+        <Label text=" : " row="0" col="1" class="h2 p-l-20"></Label>
+        <Label [text]="operator_detail.baseATK" row="0" col="2" class="h2 p-l-20"></Label>
+    </GridLayout>
+    <GridLayout rows="auto" columns="150px,auto, *" *ngIf="operator_detail" style="margin-top: 5px;" row="5" col="0"
+        colSpan="2" class="Stat-desc">
+        <Label text="Base HP" row="0" col="0" class="h2 p-l-20"></Label>
+        <Label text=" : " row="0" col="1" class="h2 p-l-20"></Label>
+        <Label [text]="operator_detail.baseHP" row="0" col="2" class="h2 p-l-20"></Label>
+    </GridLayout>
+    <GridLayout rows="auto" columns="150px,auto, *" *ngIf="operator_detail" style="margin-top: 5px;" row="6" col="0"
+        colSpan="2" class="Stat-desc">
+        <Label text="Base DEF" row="0" col="0" class="h2 p-l-20"></Label>
+        <Label text=" : " row="0" col="1" class="h2 p-l-20"></Label>
+        <Label [text]="operator_detail.baseDEF" row="0" col="2" class="h2 p-l-20"></Label>
+    </GridLayout>
+
+
+
+
+</GridLayout>

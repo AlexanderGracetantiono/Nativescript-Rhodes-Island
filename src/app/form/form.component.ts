@@ -12,11 +12,16 @@ import * as dialogs from "tns-core-modules/ui/dialogs";
 })
 export class FormComponent implements OnInit {
   public selectedIndex = 1;
-  public items: Array<string> = ["Caster", "Sniper", "Healer"]
+  public items: Array<string> = ["Caster", "Sniper", "Healer","Guard"]
   operator: Operator = {
     id: "",
     name: '',
     class: 1,
+    baseATK:"",
+    baseHP:"",
+    baseDEF:"",
+    img:"",
+
   }
   isLoading = false;
   constructor(
@@ -61,7 +66,11 @@ export class FormComponent implements OnInit {
       '/operators',
       {
         'name': this.operator.name,
-        'class': this.operator.class
+        'class': this.operator.class,
+        'baseATK': this.operator.baseATK,
+        'baseHP': this.operator.baseHP,
+        'baseDEF': this.operator.baseDEF,
+        'img': this.operator.img,
       }
     ).then(
       res => {

@@ -6,6 +6,7 @@ import { Page } from "tns-core-modules/ui/page";
 import * as firebase from "nativescript-plugin-firebase";
 import { ActivityIndicator } from "tns-core-modules/ui/activity-indicator";
 import { EventData } from "tns-core-modules/data/observable";
+import * as statusBar from 'nativescript-status-bar'
 // const firebase = require("nativescript-plugin-firebase");
 @Component({
   selector: 'ns-login',
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
   user_entity: User;
   isLogin = true;
   isLoading = false;
+  login_data={}
   constructor(
     private userservice: UserService,
     private router: Router,
@@ -30,6 +32,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    statusBar.hide();
     this.page.actionBarHidden = true;
     // var listener = {
     //   onAuthStateChanged: function(data) {
@@ -76,6 +79,7 @@ export class LoginComponent implements OnInit {
     this.userservice.loginGoogle().then((res) => {
       this.isLoading = false;
       this.router.navigate(["/home"])
+      // this.userservice.setLogin(res.displayName,res.email);
     }, (err) => {
       this.isLoading = false;
       alert({
@@ -85,7 +89,33 @@ export class LoginComponent implements OnInit {
       });
       alert(err);
     })
+
+    // if checked 
+    
+    // firebase.getValue('/operators')
+    // .then(result => {
+    //   console.log("RES: ",result)
+    //   this.isLoading = false;
+    //   this.listLoaded = true;
+    //   for (const key in result.value) {
+    //     if (result.value.hasOwnProperty(key)) {
+    //       const element = result.value[key];
+    //       console.log("Hasil foreach ", element.name)
+    //       this.listOps.push({
+    //         id: key,
+    //         name: element.name,
+    //         class: element.class,
+    //       })
+    //     }
+    //   }
+    //   console.log("Hasil get ops", this.listOps)
+    // })
+    // .catch(error => console.log("Error: " + error));
+
   }
+
+  
+
   handleLogin() {
     // alert("You're using: " + this.user_entity.email);
     this.userservice.login(this.user_entity).then((result) => {

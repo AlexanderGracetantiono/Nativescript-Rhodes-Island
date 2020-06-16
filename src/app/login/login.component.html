@@ -1,30 +1,35 @@
 <!-- <ActionBar title="Groceries"></ActionBar> -->
 
-<FlexboxLayout>
-  <StackLayout class="form" [class.dark]="!isLogin">
-    <!-- <Image src="https://i.ytimg.com/vi/sWN32SzwmR0/maxresdefault.jpg"></Image> -->
-    <Image src="~/assets/img/logoark.png"></Image>
+  <GridLayout rows="120px,auto,auto,auto,auto,auto,auto" columns="*" class="form layout" [class.dark]="!isLogin">
+    <AbsoluteLayout [visibility]="isLoading ? 'visible' : 'collapsed'" row="0" rowSpan="7" class="layout-abs">
+    </AbsoluteLayout>
+    <AbsoluteLayout [visibility]="isLoading ? 'visible' : 'collapsed'" row="0" rowSpan="7" class="layout-abs2">
+      <ActivityIndicator  [busy]="isLoading" color="white" style="text-align: center;" (busyChange)="onBusyChanged($event)"></ActivityIndicator>
+    </AbsoluteLayout>
 
-    <TextField hint="Email Address" keyboardType="email" autocorrect="false" autocapitalizationType="none"
+    <Image row="0" src="~/assets/img/logoark.png"></Image>
+    <label row="1" class="label-subtitle" text="Arknights Pocket's "style="text-align: center;"></label>
+
+    <TextField row="2" hint="Email Address" keyboardType="email" autocorrect="false" autocapitalizationType="none"
       [(ngModel)]="user_entity.email" class="input input-border"></TextField>
-    <TextField hint="Password" secure="true" [(ngModel)]="user_entity.password" class="input input-border"></TextField>
-    <StackLayout class="btn btn-primary" (tap)="handleSubmit()">
-      <label [visibility]="!isLoading ? 'visible': 'collapsed'" [text]="isLogin?'Sign in':'Sign up'"
-        style="text-align: center;"></label>
-      <ActivityIndicator [busy]="isLoading" color="red" (busyChange)="onBusyChanged($event)"></ActivityIndicator>
-    </StackLayout>
-    <StackLayout class="btn btn-secondary" (tap)="handleChangeState()">
-      <label [visibility]="!isLoading ? 'visible': 'collapsed'" [text]="isLogin?'Sign up':'Back to login'"
-        style="text-align: center;"></label>
-      <ActivityIndicator [busy]="isLoading" color="red" (busyChange)="onBusyChanged($event)"></ActivityIndicator>
-    </StackLayout>
-    <StackLayout class="btn btn-google" (tap)="handleLoginGoogle()">
-      <Image [visibility]="!isLoading ? 'visible': 'collapsed'" src="~/assets/img/logo_google.png"
-        style="width: 100px;height: 100px;background-color: white;"></Image>
-      <ActivityIndicator [busy]="isLoading" color="red" (busyChange)="onBusyChanged($event)"></ActivityIndicator>
-    </StackLayout>
-  </StackLayout>
-</FlexboxLayout>
+    <TextField row="3" hint="Password" secure="true" [(ngModel)]="user_entity.password" class="input input-border">
+    </TextField>
+
+
+    <label row="4" class="btn btn-primary" (tap)="handleSubmit()" [text]="isLogin?'Sign in':'Sign up'"
+      style="text-align: center;"></label>
+
+
+    <label row="5" class="btn btn-secondary" (tap)="handleChangeState()" [text]="isLogin?'Sign up':'Back to login'"
+      style="text-align: center;"></label>
+
+    <GridLayout row="6" columns="60px,*" class="btn btn-google" (tap)="handleLoginGoogle()">
+      <Image col="0"  src="~/assets/img/logo_google.png"
+        style="width: 60px;height: 60px;background-color: white;margin: auto;" ></Image>
+      <label col="1" class="login-google" text="Login with google account"></label>
+    </GridLayout>
+
+  </GridLayout>
 <!-- 
   [text] berguna untuk mengambil param dari ts
   text sendiri merupakan default yang tidak memunculkan text

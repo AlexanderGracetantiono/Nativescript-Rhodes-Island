@@ -8,6 +8,35 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:1032106889750:android:9d8999079f9cc426ef5b37",
+        "android_client_info": {
+          "package_name": "com.juju.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1032106889750-41e55251j1cs8bhdcn5r5p0j5dorra78.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWm4H-tMa_GFLLBcKiaAbBuo8Z4uVSRuY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1032106889750-41e55251j1cs8bhdcn5r5p0j5dorra78.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:1032106889750:android:1dc2867b1db8ac9bef5b37",
         "android_client_info": {
           "package_name": "org.nativescript.project1"
@@ -15,7 +44,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "1032106889750-lq89gqfngqj7jatmq8k0shgnc9cpeol2.apps.googleusercontent.com",
+          "client_id": "1032106889750-sfrkh5cnfpsgn013286klhf52aabg3ed.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "org.nativescript.project1",

@@ -4,20 +4,39 @@
 
         <label class="h1" text="Add Operator Form"></label>
         <label class="title" text="Operator name :"></label>
-        <TextField  #operatorTextField [(ngModel)]="operator.name" hint="Operator Name" keyboardType="email" autocorrect="false" autocapitalizationType="none"
-        class="input input-border"></TextField>
-        <!-- <DropDown
-            class="input input-border"
-            [items]="itemSource" (selectedIndexChanged)="onchange($event)" (opened)="onopen()" (closed)="onclose()" class="item-drop-down"
-            verticalAlignment="center">
-        </DropDown> -->
+        <TextField #operatorTextField [(ngModel)]="operator.name" hint="Operator Name" keyboardType="email"
+            autocorrect="false" autocapitalizationType="none" class="input input-border"></TextField>
+        <GridLayout rows="70px, 70px,70px,70px" columns="60px, *">
+            <label class="title-bold" text="Base ATK :" row="0" col="0"></label>
+            <TextField row="0" col="1" #operatorTextField [(ngModel)]="operator.baseATK" hint="Base atk"
+                keyboardType="number" autocorrect="false" autocapitalizationType="none" class="input input-border">
+            </TextField>
+
+            <label row="1" col="0" class="title-bold" text="Base HP :"></label>
+            <TextField row="1" col="1" #operatorTextField [(ngModel)]="operator.baseHP" hint="Base hp"
+                keyboardType="number" autocorrect="false" autocapitalizationType="none" class="input input-border">
+            </TextField>
+
+            <label row="2" col="0" class="title-bold" text="Base DEF :"></label>
+            <TextField row="2" col="1" #operatorTextField [(ngModel)]="operator.baseDEF" hint="Base def"
+                keyboardType="number" autocorrect="false" autocapitalizationType="none" class="input input-border">
+            </TextField>
+
+            <label row="3" col="0" class="title-bold" text="IMG URL :"></label>
+            <TextField row="3" col="1" #operatorTextField [(ngModel)]="operator.img" hint="url image"
+                keyboardType="email" autocorrect="false" autocapitalizationType="none" class="input input-border">
+            </TextField>
+        </GridLayout>
+       
+
+
         <label class="title" text="Operator class :"></label>
-        <DropDown class="input input-border" backroundColor="red" itemsTextAlignment="center" [items]="items"
+        <DropDown class="input input-border"  itemsTextAlignment="center" [items]="items"
             [(ngModel)]="selectedIndex" (selectedIndexChanged)="onchange($event)" (opened)="onopen()"
             (closed)="onclose()" row="0" colSpan="1"></DropDown>
 
         <Button text="Submit" class="btn btn-primary" (tap)="handleSubmit()"></Button>
         <ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" row="1"
-        horizontalAlignment="center" verticalAlignment="center"></ActivityIndicator>
+            horizontalAlignment="center" verticalAlignment="center"></ActivityIndicator>
     </StackLayout>
 </FlexboxLayout>

@@ -1,0 +1,28 @@
+<ActionBar title="List Task"></ActionBar>
+
+<GridLayout rows="auto, *">
+
+    <GridLayout row="0" columns="*, auto" class="add-bar" >
+        <TextField #operatorTextField [(ngModel)]="task_label" hint="Enter next task" col="0"></TextField>
+        <!-- <Label class="labelTitle" text="Add operator"></Label> -->
+        <Image src="~/assets/img/add.png" col="1" (tap)="add()"></Image>
+    </GridLayout>
+
+    <RadListView row="1" [items]="taskList" [class.visible]="listLoaded" swipeActions="true"
+        (itemSwipeProgressStarted)="onSwipeCellStarted($event)">
+
+        <ng-template let-item="item">
+            <FlexboxLayout class="subContainer"  >
+                <Label [text]="item.task_label" class="p-15 labelClass"></Label>
+            </FlexboxLayout>
+        </ng-template>
+        <GridLayout *tkListItemSwipeTemplate columns="*, auto">
+            <StackLayout id="delete-view" col="1" (tap)="delete($event)" class="delete-view">
+                <Image src="~/assets/img/bin.png"></Image>
+            </StackLayout>
+        </GridLayout>
+
+    </RadListView>
+    <ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" row="1"
+        horizontalAlignment="center" verticalAlignment="center"></ActivityIndicator>
+</GridLayout>
