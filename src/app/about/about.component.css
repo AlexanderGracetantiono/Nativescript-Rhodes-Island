@@ -1,0 +1,91 @@
+/* Add mobile styles for the component here.  */
+
+.add-bar {
+    background-color: rgb(165, 165, 165);
+    padding: 5;
+  }
+  .add-bar Image {
+    height: 25;
+    vertical-align: center;
+    margin-left: 10;
+    margin-right: 10;
+  }
+  .Stat-nav{
+    padding-top: 15px;
+    background-color: black;
+    height: 100px;
+    background-image: url("~/assets/img/bgstat.png");
+    padding-left: 20px;
+    color: black;
+  }
+  .text-subtitle{
+  text-decoration: none;
+  padding-top: 50px;
+  font-size: 10px;
+  padding-left: 50px;
+  }
+  .add-bar TextField {
+    padding: 10;
+  }
+  .layout-git{
+    background-color: rgb(139, 139, 139);
+    color: white;
+    margin: 20px;
+    border-radius: 20px;
+  }
+  .text-menu{
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 20px;
+  }
+  .center{
+    text-align: center;
+  }
+ .text-title{
+   font-size: 18px;
+   font-weight: bold;
+  }
+  .ops-logo{
+    width: 280px;
+    height: 280px;
+    border-radius: 140px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+  .text-desc{
+   font-size: 16px;
+ }
+  .delete-view {
+    background-color: #CB1D00;
+    padding: 20;
+  }
+  .delete-view Image {
+    color: white;
+    /* height: 20px; */
+  }
+  ListView {
+    opacity: 0;
+  }
+  .visible {
+    animation-name: show;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+  .labelTitle{
+    background-color:rgb(165, 165, 165);
+    text-align: center;
+    font-weight: bold;
+    color: white;
+  }
+  .subContainer{
+    background-color: white;
+    width: fit-content;
+    height: 100px;
+  }
+  .labelClass{
+    width: 500px;
+  }
+  .iconContainer{
+    background-color: black;
+  }

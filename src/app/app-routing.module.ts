@@ -10,6 +10,7 @@ import { FormComponent } from "./form/form.component";
 import { ShellComponent } from "./shell/shell.component";
 import { Ops_detailComponent } from "./ops_detail/ops_detail.component";
 import { HomeComponent } from "./home/home.component";
+import { AboutComponent } from './about/about.component';
 import { TaskComponent } from "./task/task.component";
 const routes: Routes = [
     { path: "", redirectTo: "/login", pathMatch: "full" },
@@ -25,6 +26,7 @@ const routes: Routes = [
                 { path: "task", component: TaskComponent },
                 { path: "operator/:id", component: Ops_detailComponent },
                 { path: "form", component: FormComponent },
+                { path: "about", component: AboutComponent },
             ]
         }
 

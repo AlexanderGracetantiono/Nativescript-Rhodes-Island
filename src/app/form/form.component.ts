@@ -12,7 +12,7 @@ import * as dialogs from "tns-core-modules/ui/dialogs";
 })
 export class FormComponent implements OnInit {
   public selectedIndex = 1;
-  public items: Array<string> = ["Caster", "Sniper", "Healer","Guard"]
+  public items: Array<string> = ["Caster", "Sniper", "Healer","Guard","Vanguard","Defender"]
   operator: Operator = {
     id: "",
     name: '',

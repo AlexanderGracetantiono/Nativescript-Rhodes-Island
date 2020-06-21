@@ -11,6 +11,7 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { ListComponent } from './list/list.component';
 import { ShellComponent } from "./shell/shell.component";
 import { FormComponent } from './form/form.component';
+import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { TaskComponent } from './task/task.component';
 import { Ops_detailComponent } from "./ops_detail/ops_detail.component";
@@ -52,7 +53,7 @@ firebase.init({
     NativeScriptFormsModule,
     HttpClientModule,
     NativeScriptUIListViewModule,
-    DropDownModule
+    DropDownModule,
   ],
   declarations: [
     AppComponent,
@@ -64,7 +65,8 @@ firebase.init({
     ShellComponent,
     Ops_detailComponent,
     HomeComponent,
-    TaskComponent
+    TaskComponent,
+    AboutComponent
   ],
   providers: [],
   schemas: [

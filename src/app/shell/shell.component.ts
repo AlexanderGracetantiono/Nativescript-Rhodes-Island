@@ -5,6 +5,7 @@ import { Page } from 'tns-core-modules/ui/page/page';
 import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular";
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import * as statusBar from 'nativescript-status-bar'
+import { Stretch ,Image} from 'tns-core-modules/ui/image'
 import { myData } from "../myData";
 @Component({
     selector: 'shell',
@@ -45,6 +46,9 @@ export class ShellComponent implements OnInit {
     }
     list_nav() {
         this.router.navigate(["/list"]);
+    }
+    about_nav() {
+        this.router.navigate(["/about"]);
     }
     get mainContentText() {
         return this._mainContentText;

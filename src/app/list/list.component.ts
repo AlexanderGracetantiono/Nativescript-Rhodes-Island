@@ -6,6 +6,7 @@ import { ListViewEventData, RadListView } from "nativescript-ui-listview";
 import { View } from "tns-core-modules/ui/core/view";
 import { Router } from "@angular/router";
 import * as firebase from "nativescript-plugin-firebase";
+import { Image } from "tns-core-modules/ui/image";
 @Component({
   selector: 'ns-home',
   templateUrl: './list.component.html',
@@ -65,6 +66,12 @@ export class ListComponent implements OnInit {
               case 3:
                 className="Guard"
                 break;
+              case 4:
+                className="Vanguard"
+                break;
+              case 5:
+                className="Defender"
+                break;
             
               default:
                 break;
@@ -72,6 +79,7 @@ export class ListComponent implements OnInit {
             this.listOps.push({
               id: key,
               name: element.name,
+              img: element.img,
               class: element.class,
               className: className,
             })
