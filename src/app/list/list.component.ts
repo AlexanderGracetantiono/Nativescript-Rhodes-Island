@@ -7,6 +7,9 @@ import { View } from "tns-core-modules/ui/core/view";
 import { Router } from "@angular/router";
 import * as firebase from "nativescript-plugin-firebase";
 import { Image } from "tns-core-modules/ui/image";
+
+import { myData } from "../myData";
+import * as language from "./language";
 @Component({
   selector: 'ns-home',
   templateUrl: './list.component.html',
@@ -28,6 +31,8 @@ export class ListComponent implements OnInit {
   listOps = [];
   listLoaded = false;
   isLoading = false;
+  lang = myData.chosen_lang;
+  used_lang = language.default[this.lang];
   @ViewChild("operatorTextField", { static: false }) operatorTextField: ElementRef;
   constructor(
     private operatorService: OperatorService,
@@ -46,7 +51,7 @@ export class ListComponent implements OnInit {
     this.isLoading = true;
     firebase.getValue('/operators')
       .then(result => {
-        console.log("RES: ",result)
+        // console.log("RES: ",result)
         this.isLoading = false;
         this.listLoaded = true;
         for (const key in result.value) {
@@ -85,7 +90,7 @@ export class ListComponent implements OnInit {
             })
           }
         }
-        console.log("Hasil get ops", this.listOps)
+        // console.log("Hasil get ops", this.listOps)
       })
       .catch(error => console.log("Error: " + error));
   }

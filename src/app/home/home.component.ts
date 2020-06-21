@@ -8,6 +8,7 @@ import { Page } from "tns-core-modules/ui/page";
 import { Router } from "@angular/router";
 import * as firebase from "nativescript-plugin-firebase";
 import { myData } from "../myData";
+import * as language from "./language";
 import { WebView, LoadEventData } from "tns-core-modules/ui/web-view";
 import InAppBrowser from 'nativescript-inappbrowser'
 import { openUrl } from 'tns-core-modules/utils/utils'
@@ -29,7 +30,8 @@ export class HomeComponent implements OnInit {
     img: "",
   }
   urls: string;
-
+  lang = myData.chosen_lang;
+  used_lang = language.default[this.lang];
   @ViewChild("operatorTextField", { static: false }) operatorTextField: ElementRef;
   constructor(
     private page: Page,
@@ -60,6 +62,9 @@ export class HomeComponent implements OnInit {
         break;
       case "task":
         this.router.navigate(["/task"]);
+        break;
+      case "lang":
+        this.router.navigate(["/changelang"]);
         break;
 
       default:

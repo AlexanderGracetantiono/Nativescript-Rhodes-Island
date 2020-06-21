@@ -12,7 +12,7 @@ import * as dialogs from "tns-core-modules/ui/dialogs";
 })
 export class Ops_detailComponent implements OnInit {
   public selectedIndex = 1;
-  public items: Array<string> = ["Caster", "Sniper", "Healer"]
+  public items: Array<string> = ["Caster", "Sniper", "Healer","Guard","Vanguard","Defender"]
   rating = [];
   isLoading = false;
   operator_detail = {
@@ -23,6 +23,7 @@ export class Ops_detailComponent implements OnInit {
     img: "",
     class: 0
   };
+  className:string;
   constructor(
     private router: Router,
     private page: Page,
@@ -37,6 +38,29 @@ export class Ops_detailComponent implements OnInit {
     console.log("data: ", id_detail);
     firebase.getValue('/operators/' + id_detail)
       .then(result => {
+        switch (result.value.class) {
+          case 0:
+            this.className="Sniper"
+            break;
+          case 1:
+            this.className="Caster"
+            break;
+          case 2:
+            this.className="Healer"
+            break;
+          case 3:
+            this.className="Guard"
+            break;
+          case 4:
+            this.className="Vanguard"
+            break;
+          case 5:
+            this.className="Defender"
+            break;
+        
+          default:
+            break;
+        }
         this.operator_detail = {
           name: result.value.name,
           baseATK: result.value.baseATK,

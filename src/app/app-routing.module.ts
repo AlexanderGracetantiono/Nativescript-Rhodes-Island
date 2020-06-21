@@ -12,9 +12,12 @@ import { Ops_detailComponent } from "./ops_detail/ops_detail.component";
 import { HomeComponent } from "./home/home.component";
 import { AboutComponent } from './about/about.component';
 import { TaskComponent } from "./task/task.component";
+import { LangComponent } from './lang/lang.component';
+import { ResetComponent } from './login/reset.component';
 const routes: Routes = [
-    { path: "", redirectTo: "/login", pathMatch: "full" },
+    { path: "", redirectTo: "/reset", pathMatch: "full" },
     { path: "login", component: LoginComponent },
+    { path: "reset", component: ResetComponent },
         {
             path: "",
             component: ShellComponent,
@@ -27,6 +30,7 @@ const routes: Routes = [
                 { path: "operator/:id", component: Ops_detailComponent },
                 { path: "form", component: FormComponent },
                 { path: "about", component: AboutComponent },
+                { path: "changelang", component: LangComponent },
             ]
         }
 

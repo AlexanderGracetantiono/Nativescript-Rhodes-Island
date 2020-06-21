@@ -1,0 +1,38 @@
+<ActionBar [title]="used_lang.LABEL_TITLE"></ActionBar>
+
+<GridLayout rows="150px,auto,40px,auto,20px,auto,*" style="background-color: black;color: white;">
+    <GridLayout row="3" rows="*" columns="*,150px" style="margin-top: 5px;" class="Stat-nav" (tap)="onTap('en')">
+        <Label [text]="used_lang.LABEL_ENG" row="0" class="text-title "></Label>
+        <Label [text]="used_lang.LABEL_SUB_ENG" row="0" class="text-subtitle "></Label>
+        <StackLayout [style]="(temp_language=='EN')?'background-color: green;':'background-color: gray;'"
+            class="circle-k" col="1">
+        </StackLayout>
+    </GridLayout>
+    <GridLayout row="5" rows="*" columns="*,150px" [style]="'margin-top: 5px'" class="Stat-nav" (tap)="onTap('id')">
+        <Label [text]="used_lang.LABEL_ID" row="0" class="text-title "></Label>
+        <Label [text]="used_lang.LABEL_SUB_ID" row="0" class="text-subtitle "></Label>
+        <StackLayout [style]="(temp_language=='ID')?'background-color: green;':'background-color: gray;'"
+        class="circle-k" col="1">
+    </StackLayout>
+</GridLayout>
+<StackLayout row="6" class="Button-Save" (tap)="onTap('save')">
+    <Label [text]="used_lang.LABEL_SAVE" row="0" class="text-button" style="color: white;"></Label>
+    </StackLayout>
+    <!-- <GridLayout row="4" rows="*" columns="*" style="margin-top: 5px;" class="Stat-nav" (tap)="onTap('news')">
+        <Label [text]="used_lang.LABEL_EVENT" row="0" class="text-title "></Label>
+        <Label [text]="used_lang.LABEL_SUB_EVENT" row="0" class="text-subtitle "></Label>
+    </GridLayout>
+    <GridLayout row="5" rows="*" columns="*" style="margin-top: 5px;" class="Stat-nav" (tap)="onTap('banner')">
+        <Label [text]="used_lang.LABEL_BANNER" row="0" class="text-title "></Label>
+        <Label [text]="used_lang.LABEL_SUB_BANNER" row="0" class="text-subtitle "></Label>
+    </GridLayout>
+    <GridLayout row="6" rows="*" columns="*" style="margin-top: 5px;" class="Stat-nav" (tap)="onTap('listops')">
+        <Label [text]="used_lang.LABEL_OPSLIST" row="0" class="text-title "></Label>
+        <Label [text]="used_lang.LABEL_SUB_OPSLIST" row="0" class="text-subtitle "></Label>
+    </GridLayout>
+    <GridLayout row="7" rows="*" columns="*" style="margin-top: 5px;" class="Stat-nav" (tap)="onTap('task')">
+        <Label [text]="used_lang.LABEL_TASKLIST" row="0" class="text-title "></Label>
+        <Label [text]="used_lang.LABEL_SUB_TASKLIST" row="0" class="text-subtitle "></Label>
+    </GridLayout> -->
+
+</GridLayout>

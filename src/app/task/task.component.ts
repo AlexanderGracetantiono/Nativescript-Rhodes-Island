@@ -8,6 +8,7 @@ import { Router } from "@angular/router";
 import * as firebase from "nativescript-plugin-firebase";
 import { myData } from "../myData";
 import * as dialogs from "tns-core-modules/ui/dialogs";
+import * as language from "./language";
 @Component({
   selector: 'ns-home',
   templateUrl: './task.component.html',
@@ -24,6 +25,8 @@ export class TaskComponent implements OnInit {
   taskList = [];
   listLoaded = false;
   isLoading = false;
+  lang = myData.chosen_lang;
+  used_lang = language.default[this.lang];
   @ViewChild("operatorTextField", { static: false }) operatorTextField: ElementRef;
   constructor(
     private operatorService: OperatorService,

@@ -14,6 +14,8 @@ import { FormComponent } from './form/form.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { TaskComponent } from './task/task.component';
+import { ResetComponent } from './login/reset.component';
+import { LangComponent } from './lang/lang.component';
 import { Ops_detailComponent } from "./ops_detail/ops_detail.component";
 import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
 import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
@@ -66,7 +68,9 @@ firebase.init({
     Ops_detailComponent,
     HomeComponent,
     TaskComponent,
-    AboutComponent
+    AboutComponent,
+    LangComponent,
+    ResetComponent
   ],
   providers: [],
   schemas: [

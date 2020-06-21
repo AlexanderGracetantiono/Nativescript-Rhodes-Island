@@ -1,9 +1,9 @@
-<ActionBar title="List Task"></ActionBar>
+<ActionBar [title]="used_lang.LABEL_LISTTASK"></ActionBar>
 
 <GridLayout rows="auto, *">
 
     <GridLayout row="0" columns="*, auto" class="add-bar" >
-        <TextField #operatorTextField [(ngModel)]="task_label" hint="Enter next task" col="0"></TextField>
+        <TextField #operatorTextField [(ngModel)]="task_label" [hint]="used_lang.LABEL_ADDTASK" col="0"></TextField>
         <!-- <Label class="labelTitle" text="Add operator"></Label> -->
         <Image src="~/assets/img/add.png" col="1" (tap)="add()"></Image>
     </GridLayout>

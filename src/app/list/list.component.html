@@ -1,9 +1,9 @@
-<ActionBar title="List Operator"></ActionBar>
+<ActionBar [title]="used_lang.LABEL_LISTOPS"></ActionBar>
 
 <GridLayout rows="auto, *">
 
     <GridLayout row="0" columns="*, auto" class="add-bar" (tap)="add()">
-        <Label class="labelTitle" text="Add operator"></Label>
+        <Label class="labelTitle" [text]="used_lang.LABEL_ADDLISTOPS"></Label>
         <Image src="~/assets/img/add.png" col="1"></Image>
     </GridLayout>
 

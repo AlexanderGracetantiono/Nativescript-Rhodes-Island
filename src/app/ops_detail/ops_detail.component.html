@@ -17,7 +17,7 @@
     <GridLayout rows="auto" columns="100px, *" *ngIf="operator_detail" style="margin-top: 5px;" row="3" col="0"
         colSpan="2" class="Stat-desc">
         <Label text="Class:" row="0" col="0" class="h2 p-l-20"></Label>
-        <Label [text]="(operator_detail.class==0?'Sniper':operator_detail.class==1?'Caster':'Healer')" class="h2 p-l-20"
+        <Label [text]="className" class="h2 p-l-20"
             row="0" col="1"></Label>
     </GridLayout>
 
