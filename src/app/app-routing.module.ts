@@ -15,7 +15,7 @@ import { TaskComponent } from "./task/task.component";
 import { LangComponent } from './lang/lang.component';
 import { ResetComponent } from './login/reset.component';
 const routes: Routes = [
-    { path: "", redirectTo: "/reset", pathMatch: "full" },
+    { path: "", redirectTo: "/login", pathMatch: "full" },
     { path: "login", component: LoginComponent },
     { path: "reset", component: ResetComponent },
         {
