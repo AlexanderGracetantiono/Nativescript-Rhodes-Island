@@ -33,7 +33,6 @@ const routes: Routes = [
                 { path: "changelang", component: LangComponent },
             ]
         }
-
 ];
 
 @NgModule({

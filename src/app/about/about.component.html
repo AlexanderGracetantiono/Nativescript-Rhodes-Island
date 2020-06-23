@@ -1,43 +1,74 @@
-<ActionBar title="Home"></ActionBar>
+<ActionBar title="About"></ActionBar>
 
-<GridLayout rows="auto,auto" style="background-color: black;color: white;">
-    <GridLayout row="0" col="0" colSpan="2" rows="*" columns="*" style="margin-top: 40px;margin-bottom: 100px;" class="Stat-menu">
-        <Label text="About Creator" row="2" class="text-menu"></Label>
-    </GridLayout>
-    <GridLayout rows="auto,auto,auto,auto" row="1" class="layout-git" (tap)="openLink()">
-        <Image [src]="about_userdetail.avatar" row="0" col="0" colSpan="2" class="ops-logo" >
-        </Image>
-        <Image src="https://img.favpng.com/9/24/22/github-computer-icons-logo-png-favpng-N47TpAbDhpdesHinVrtW72THz.jpg"
-            row="1" col="0" colSpan="2" style="width: 80px;height: 80px; border-radius: 50px;">
-        </Image>
-        <GridLayout row="2" rows="*,*" columns="*" style="margin-top: 20px;margin-bottom: 20px;" class="Stat-desc">
-            <Label text="Github" row="0" col="0" class="text-title center"></Label>
-            <Label [text]="about_userdetail.username" class="text-desc center" row="1" col="0"></Label>
-        </GridLayout>
-        <GridLayout row="3" rows="*,*" columns="*" style="margin-top: 20px;margin-bottom: 20px;" class="Stat-menu">
-            <Label text="Bio" row="0" col="0" class="text-title center"></Label>
-            <Label textWrap="true" [text]="about_userdetail.bio" class="text-desc center" row="1" col="0"></Label>
-        </GridLayout>
-    </GridLayout>
-    <!-- <GridLayout row="3" rows="*" columns="*" style="margin-top: 5px;" class="Stat-nav" (tap)="onTap('operation')">
-            <Label text="Operation News" row="0" class="text-title "></Label>
-        <Label text="External Link about operation" row="0" class="text-subtitle "></Label>
-    </GridLayout>
-    <GridLayout row="4" rows="*" columns="*" style="margin-top: 5px;" class="Stat-nav" (tap)="onTap('news')">
-        <Label text="Event News" row="0" class="text-title "></Label>
-        <Label text="External Link about news" row="0" class="text-subtitle "></Label>
-    </GridLayout>
-    <GridLayout row="5" rows="*" columns="*" style="margin-top: 5px;" class="Stat-nav" (tap)="onTap('banner')">
-        <Label text="Banner News" row="0" class="text-title "></Label>
-        <Label text="External Link about banner" row="0" class="text-subtitle "></Label>
-    </GridLayout>
-    <GridLayout row="6" rows="*" columns="*" style="margin-top: 5px;" class="Stat-nav" (tap)="onTap('listops')">
-        <Label text="Operator List" row="0" class="text-title "></Label>
-        <Label text="Internal app about list operator" row="0" class="text-subtitle "></Label>
-    </GridLayout>
-    <GridLayout row="7" rows="*" columns="*" style="margin-top: 5px;" class="Stat-nav" (tap)="onTap('task')">
-        <Label text="Task List" row="0" class="text-title "></Label>
-        <Label text="Internal app about task" row="0" class="text-subtitle "></Label>
-    </GridLayout> -->
 
-</GridLayout>
+<GridLayout rows="*" style="background-color: black;color: white;">
+    <ScrollView row="0">
+        <GridLayout rows="auto,auto,auto,auto" style="background-color: black;color: white;">
+            <GridLayout rows="auto,auto,auto,auto,auto" row="0" class="layout-git">
+                <Image [src]="about_userdetail.avatar" row="0" col="0" colSpan="2" class="ops-logo">
+                </Image>
+                <GridLayout row="2" rows="*,*" columns="*" style="margin-top: 20px;margin-bottom: 20px;"
+                    class="Stat-desc">
+                    <Label text="Developer" row="0" col="0" class="text-title center"></Label>
+                    <Label [text]="about_userdetail.username" class="text-desc center" row="1" col="0"></Label>
+                </GridLayout>
+                <GridLayout row="3" rows="*,*" columns="*" style="margin-top: 20px;margin-bottom: 20px;"
+                    class="Stat-menu">
+                    <Label text="Bio" row="0" col="0" class="text-title center"></Label>
+                    <Label textWrap="true" [text]="about_userdetail.bio" class="text-desc center" row="1"
+                        col="0"></Label>
+                </GridLayout>
+                <GridLayout row="4" rows="*,*" columns="*" style="margin-top: 20px;margin-bottom: 20px;"
+                    (tap)="openLink()" class="Stat-menu">
+                    <Image
+                        src="https://img.favpng.com/9/24/22/github-computer-icons-logo-png-favpng-N47TpAbDhpdesHinVrtW72THz.jpg"
+                        row="0" col="0" colSpan="2" style="width: 80px;height: 80px; border-radius: 50px;">
+                    </Image>
+                    <Label text="For more info click here" row="1" col="0" class="text-title center"></Label>
+                </GridLayout>
+            </GridLayout>
+            <GridLayout rows="auto,auto,auto,auto" row="1" class="layout-git">
+                <Image src="https://pbs.twimg.com/profile_images/958827878518435840/zfTwD32p_400x400.jpg" row="0"
+                    col="0" colSpan="2" class="ops-logo">
+                </Image>
+                <GridLayout row="1" rows="*,*" columns="*" style="margin-top: 20px;margin-bottom: 20px;"
+                    class="Stat-desc">
+                    <Label text="Data Provider" row="0" col="0" class="text-title center"></Label>
+                    <Label text="Gamepress" class="text-desc center" row="1" col="0"></Label>
+                </GridLayout>
+                <GridLayout row="2" rows="*,*" columns="*" style="margin-top: 20px;margin-bottom: 20px;"
+                    class="Stat-menu">
+                    <Label text="Contribution" row="0" col="0" class="text-title center"></Label>
+                    <Label textWrap="true"
+                        text="Operator image and data is provided by gamepress, please visit the website"
+                        class="text-desc center" row="1" col="0"></Label>
+                </GridLayout>
+                <GridLayout row="3" rows="*" columns="*" style="margin-top: 20px;margin-bottom: 20px;"
+                    (tap)="openLinkAnother('https://gamepress.gg/')" class="Stat-menu">
+                    <Label text="For more info click here" row="0" col="0" class="text-title center"></Label>
+                </GridLayout>
+            </GridLayout>
+            <GridLayout rows="auto,auto,auto,auto" row="2" class="layout-git">
+                <Image src="https://mediaformasi.com/wp-content/uploads/2019/06/9a911c4d24d7a25cdc346fc5f74523001559341569_full.jpg" row="0"
+                    col="0" colSpan="2" class="ops-banner">
+                </Image>
+                <GridLayout row="1" rows="*,*" columns="*" style="margin-top: 20px;margin-bottom: 20px;"
+                    class="Stat-desc">
+                    <Label text="Top Contributor" row="0" col="0" class="text-title center"></Label>
+                    <Label text="Akrnights Mobile Game" class="text-desc center" row="1" col="0"></Label>
+                </GridLayout>
+                <GridLayout row="2" rows="*,*" columns="*" style="margin-top: 20px;margin-bottom: 20px;"
+                    class="Stat-menu">
+                    <Label text="The Game" row="0" col="0" class="text-title center"></Label>
+                    <Label textWrap="true"
+                        text="Arknights is a mobile game, develop by Hypergryph & Yostar studio"
+                        class="text-desc center" row="1" col="0"></Label>
+                </GridLayout>
+                <GridLayout row="3" rows="*" columns="*" style="margin-top: 20px;margin-bottom: 20px;"
+                    (tap)="openLinkAnother('https://www.arknights.global/')" class="Stat-menu">
+                    <Label text="For more info click here" row="0" col="0" class="text-title center"></Label>
+                </GridLayout>
+            </GridLayout>
+
+        </GridLayout>
+    </ScrollView>

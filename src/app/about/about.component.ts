@@ -30,7 +30,7 @@ export class AboutComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.page.actionBarHidden = true;
+    // this.page.actionBarHidden = true;
     this.AS.getUserData().subscribe((response: any) => {
       this.about_userdetail = {
         avatar: response.avatar_url,
@@ -79,6 +79,53 @@ export class AboutComponent implements OnInit {
         //   message: JSON.stringify(result),
         //   okButtonText: 'Ok'
         // })
+      }
+      else {
+        openUrl(url);
+      }
+    }
+    catch (error) {
+      alert({
+        title: 'Error',
+        message: error.message,
+        okButtonText: 'Ok'
+      })
+    }
+  }
+  openLinkAnother = async (urls:string) => {
+    try {
+      const url = urls;
+      if (await InAppBrowser.isAvailable()) {
+        const result = await InAppBrowser.open(url, {
+          // iOS Properties
+          dismissButtonStyle: 'cancel',
+          preferredBarTintColor: '#636363',
+          preferredControlTintColor: 'white',
+          readerMode: true,
+          animated: true,
+          modalPresentationStyle: 'fullScreen',
+          modalTransitionStyle: 'partialCurl',
+          modalEnabled: true,
+          enableBarCollapsing: false,
+          // Android Properties
+          showTitle: false,
+          toolbarColor: '#636363',
+          secondaryToolbarColor: 'black',
+          enableUrlBarHiding: true,
+          enableDefaultShare: true,
+          forceCloseOnRedirection: false,
+          // Specify full animation resource identifier(package:anim/name)
+          // or only resource name(in case of animation bundled with app).
+          animations: {
+            startEnter: 'slide_in_right',
+            startExit: 'slide_out_left',
+            endEnter: 'slide_in_left',
+            endExit: 'slide_out_right'
+          },
+          headers: {
+            'my-custom-header': 'my custom header value'
+          }
+        })
       }
       else {
         openUrl(url);
